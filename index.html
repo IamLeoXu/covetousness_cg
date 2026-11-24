@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151e">
+  <title>DEAD AIR — The Things She Kept</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2310151e'/%3E%3Cpath d='M8 5h7c14 0 14 22 0 22H8z' fill='%23d2f850'/%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="assets/props/city.webp">
+  <link rel="preload" as="image" href="assets/ui/koharu-tape-decal.png">
+  <link rel="stylesheet" href="style.css?v=0.25">
+  <link rel="stylesheet" href="receiver.css?v=0.25">
+  <script defer src="timeline.js?v=0.25"></script>
+  <script defer src="assets/audio-analysis.js?v=0.25"></script>
+  <script defer src="audio.js?v=0.25"></script>
+  <script defer src="tone.js?v=0.25"></script>
+  <script defer src="signal.js?v=0.25"></script>
+  <script defer src="meters.js?v=0.25"></script>
+  <script defer src="film.js?v=0.25"></script>
+  <script defer src="cassette.js?v=0.25"></script>
+  <script defer src="opening.js?v=0.25"></script>
+  <script defer src="app.js?v=0.25"></script>
+</head>
+<body>
+  <div id="viewport">
+    <div id="workbenchWorld" class="workbench-world">
+      <div class="workbench-surface" aria-hidden="true"><div class="bench-mat"></div><div class="bench-edge"></div><div class="archive-case"><span>AFTER HOURS</span><b>MEMORY ARCHIVE</b><i></i></div><div class="bench-pencil"></div><div class="bench-inventory"><span>DA / 107.9</span><i></i><small>ARCHIVE WORKSTATION</small></div></div>
+    <section id="opening" class="bench-intro" data-step="ready" aria-label="Insert Koharu’s cassette">
+      <div id="loadScene" class="loading-scene">
+        <div class="loading-title"><span>DEAD AIR / AFTER HOURS</span><h1>FALLING<br>FLOWERS</h1><p>MEMORY ARCHIVE · SIDE A</p></div>
+        <button id="enter" class="loading-tape" aria-label="Insert the cassette and start the memory record"><span id="handCassette" class="loading-tape-art"></span><span class="loading-tape-caption">SELECT TAPE / INSERT</span></button>
+        <p id="loadStatus" class="loading-status" role="status">INSERT TAPE</p>
+        <span class="loading-duration">03:33 / THE THINGS SHE KEPT</span>
+      </div>
+    </section>
+
+    <main id="game" class="idle" aria-label="DEAD AIR execution record">
+      <header class="masthead">
+        <div class="brand">DEAD<span>●</span>AIR<small>AFTER HOURS RADIO</small></div>
+        <div class="record-title">THE THINGS SHE KEPT</div>
+        <div class="on-air" id="onAir">ON AIR<span>FM 107.9</span></div>
+      </header>
+
+      <div class="machine">
+        <aside class="deck" aria-label="Cassette deck">
+          <div class="deck-head"><span>CASSETTE</span><span>SIDE A</span></div>
+          <div class="deck-name">AH–02</div>
+          <div class="deck-hatch" id="deckHatch" data-state="loaded">
+            <div class="cassette" id="cassetteMount"></div>
+            <div class="deck-door" id="deckDoor"><div class="deck-glass" aria-hidden="true"></div><span class="hatch-caption">MEMORY CARTRIDGE <b>A</b></span><span class="hatch-latch" aria-hidden="true"></span></div>
+            <span class="hatch-hinge hinge-left" aria-hidden="true"></span><span class="hatch-hinge hinge-right" aria-hidden="true"></span>
+          </div>
+          <div class="transport" aria-label="Transport controls">
+            <button id="rew" title="Rewind (J)" aria-label="Rewind"><svg viewBox="0 0 32 24" aria-hidden="true"><path d="M16 3 3 12l13 9zm14 0-13 9 13 9z"/></svg><span>REW</span></button>
+            <button id="stop" title="Stop and rewind to the beginning" aria-label="Stop"><svg viewBox="0 0 32 24" aria-hidden="true"><path d="M8 4h16v16H8z"/></svg><span>STOP</span></button>
+            <button id="play" class="primary" title="Play or pause (Space)" aria-label="Play"><svg viewBox="0 0 32 24" aria-hidden="true"><path id="playIcon" d="M9 2 26 12 9 22z"/></svg><span id="playLabel">PLAY</span></button>
+            <button id="forward" title="Fast forward (L)" aria-label="Fast forward"><svg viewBox="0 0 32 24" aria-hidden="true"><path d="m2 3 13 9-13 9zm14 0 13 9-13 9z"/></svg><span>F.FWD</span></button>
+          </div>
+          <div class="transport-state"><span id="deckState">READY</span><span id="counter">00:00</span></div>
+
+          <div class="meter-pair" aria-label="Stereo VU meters">
+            <div class="vu" id="meterL"></div>
+            <div class="vu" id="meterR"></div>
+          </div>
+          <div class="scope-label"><span>SOURCE SIGNAL</span><span class="signal-lamp" id="signalLamp"></span></div>
+          <canvas id="scope" width="480" height="145" aria-label="Live stereo waveform"></canvas>
+        </aside>
+
+        <section class="monitor" aria-label="Execution film">
+          <i class="chassis-screw screw-tl" aria-hidden="true"></i><i class="chassis-screw screw-tr" aria-hidden="true"></i><i class="chassis-screw screw-bl" aria-hidden="true"></i><i class="chassis-screw screw-br" aria-hidden="true"></i>
+          <div class="monitor-bar">
+            <span><i class="receiver-lamp" aria-hidden="true"></i> MEMORY RECEIVER</span>
+            <time id="filmTime">00:00:00</time>
+            <button id="cinema" title="Cinema view (C)" aria-label="Cinema view">CINEMA</button>
+            <button id="fullscreen" title="Fullscreen (F)" aria-label="Fullscreen">FULLSCREEN</button>
+          </div>
+          <div class="film" id="film">
+            <div class="picture" id="picture">
+              <canvas id="scenery" width="1240" height="488" role="img" aria-label="Koharu’s recorded memory"></canvas>
+              <canvas id="signalNoise" class="signal-noise" width="480" height="200" aria-hidden="true"></canvas>
+              <div class="crt-glass" aria-hidden="true"></div>
+              <div id="lyric" class="lyric" data-align="left" aria-live="off">
+                <div class="lyric-copy"><span id="lyricOne"></span><span id="lyricTwo"></span></div>
+              </div>
+              <div id="message" class="message" role="status" hidden></div>
+            </div>
+          </div>
+          <div class="monitor-sill"><span class="receiver-state"><i aria-hidden="true"></i><b id="trackingState">ACQUIRING</b></span><span class="receiver-model">DA–17 <em>COLOUR MEMORY SYSTEM</em></span><span class="receiver-vents" aria-hidden="true"></span><span class="receiver-dial" aria-hidden="true"></span><span class="receiver-dial small-dial" aria-hidden="true"></span></div>
+        </section>
+      </div>
+
+      <footer class="soundboard" aria-label="Mixing deck and timeline">
+        <section class="mixer" aria-label="Playback and signal restoration">
+          <div class="mixer-header"><span>SIGNAL RECOVERY</span><button id="signalAuto" class="automation-switch" aria-pressed="true" title="Follow the recorded signal recovery">AUTO</button><span class="mixer-leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+          <div class="mixer-channels">
+            <label class="mix-strip master-strip">
+              <span>MASTER</span>
+              <span class="fader-well master-well"><input id="volume" type="range" min="0" max="100" value="75" aria-label="Master volume"></span>
+              <output id="volumeLabel" for="volume">75</output>
+            </label>
+            <label class="mix-strip">
+              <span>TRACKING <small>PICTURE</small></span>
+              <span class="fader-well"><input id="trackingFx" type="range" min="0" max="100" value="0" aria-label="Picture tracking" title="Raise to lock the picture; lower to lose the recorded signal."></span>
+              <output id="trackingLabel" for="trackingFx">0%</output>
+            </label>
+            <label class="mix-strip">
+              <span>RESTORE <small>AUDIO</small></span>
+              <span class="fader-well"><input id="restorationFx" type="range" min="0" max="100" value="0" aria-label="Audio restoration" title="Raise to recover the original recording; lower for a narrow, noisy signal."></span>
+              <output id="restorationLabel" for="restorationFx">0%</output>
+            </label>
+            <button id="mute" class="mute" aria-label="Mute" aria-pressed="false" title="Mute (M)">
+              <svg viewBox="0 0 28 24" aria-hidden="true"><path d="M3 9h5l7-6v18l-7-6H3z"/><path class="sound-waves" d="M19 7q7 5 0 10m3-14q12 9 0 18"/></svg>
+              <span>MUTE</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="tone-panel" aria-label="Three band equalizer">
+          <div class="module-header"><span>TONE CONTROL</span><b>EQ</b></div>
+          <div class="tone-controls">
+            <label class="tone-control"><span>HI</span><span id="dialHi" class="tone-dial"><i class="dial-cap"></i><input id="eqHi" type="range" min="-12" max="12" step="0.5" value="0" aria-label="High frequency gain" title="High shelf · 6 kHz. Drag, scroll or use arrow keys. Double click to reset."></span><output id="eqHiLabel" for="eqHi">0.0 dB</output></label>
+            <label class="tone-control"><span>MID</span><span id="dialMid" class="tone-dial"><i class="dial-cap"></i><input id="eqMid" type="range" min="-12" max="12" step="0.5" value="0" aria-label="Mid frequency gain" title="Mid bell · 1.2 kHz. Drag, scroll or use arrow keys. Double click to reset."></span><output id="eqMidLabel" for="eqMid">0.0 dB</output></label>
+            <label class="tone-control"><span>LO</span><span id="dialLo" class="tone-dial"><i class="dial-cap"></i><input id="eqLo" type="range" min="-12" max="12" step="0.5" value="0" aria-label="Low frequency gain" title="Low shelf · 120 Hz. Drag, scroll or use arrow keys. Double click to reset."></span><output id="eqLoLabel" for="eqLo">0.0 dB</output></label>
+          </div>
+          <div class="tone-caption"><span>−12</span><b>DIRECT EQ</b><span>+12 dB</span></div>
+        </section>
+
+        <section class="wave-deck" aria-label="Audio waveform and playback position">
+          <div class="timeline-head">
+            <span class="timeline-name">SIDE A <strong>FALLING FLOWERS</strong></span>
+            <div class="time-display"><time id="time">00:00</time> <span id="duration">/ 03:33</span></div>
+          </div>
+          <div class="wave-track">
+            <canvas id="overview" width="1800" height="160" aria-hidden="true"></canvas>
+            <div id="playhead" class="playhead"></div>
+            <input id="seek" type="range" min="0" max="213.68" step="0.01" value="0" aria-label="Playback position">
+          </div>
+          <div class="timeline-labels" aria-hidden="true"><span>00:00</span><span>01:00</span><span>02:00</span><span>03:00</span><span id="endTime">03:33</span></div>
+        </section>
+
+        <section class="spectrum-panel" aria-label="Live post equalizer programme spectrum">
+          <div class="module-header"><span>SPECTRUM</span><b>POST EQ</b></div>
+          <div class="spectrum-bezel"><canvas id="spectrum" width="420" height="216" aria-label="Live frequency bands from 35 Hz to 18 kHz"></canvas></div>
+          <div class="spectrum-scale" aria-hidden="true"><span>40</span><span>250</span><span>1k</span><span>4k</span><span>16k</span></div>
+        </section>
+
+        <section class="phase-panel" aria-label="Stereo phase scope">
+          <div class="phase-header">PHASE MONITOR</div>
+          <div class="phase-bezel"><canvas id="phaseScope" width="400" height="256" aria-label="Live stereo phase trace"></canvas></div>
+        </section>
+      </footer>
+      <button id="exitCinema" class="exit-cinema" title="Return to deck (C)" aria-label="Return to deck">DECK</button>
+      <audio id="audio" preload="auto" src="assets/bgm.mp3"></audio>
+    </main>
+    </div>
+  </div>
+</body>
+</html>
