@@ -1,6 +1,6 @@
-/* DEAD AIR v0.25: begin on the cassette close-up, then pull back to the same workbench. */
+/* DEAD AIR v0.27: intact glass and restrained mechanical micro-scratches. */
 window.TIMELINE = {
-  "version": "0.25",
+  "version": "0.27",
   "duration": 213.68,
   "music": "assets/bgm.mp3",
   "art": {

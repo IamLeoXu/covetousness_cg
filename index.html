@@ -8,18 +8,22 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2310151e'/%3E%3Cpath d='M8 5h7c14 0 14 22 0 22H8z' fill='%23d2f850'/%3E%3C/svg%3E">
   <link rel="preload" as="image" href="assets/props/city.webp">
   <link rel="preload" as="image" href="assets/ui/koharu-tape-decal.png">
-  <link rel="stylesheet" href="style.css?v=0.25">
-  <link rel="stylesheet" href="receiver.css?v=0.25">
-  <script defer src="timeline.js?v=0.25"></script>
-  <script defer src="assets/audio-analysis.js?v=0.25"></script>
-  <script defer src="audio.js?v=0.25"></script>
-  <script defer src="tone.js?v=0.25"></script>
-  <script defer src="signal.js?v=0.25"></script>
-  <script defer src="meters.js?v=0.25"></script>
-  <script defer src="film.js?v=0.25"></script>
-  <script defer src="cassette.js?v=0.25"></script>
-  <script defer src="opening.js?v=0.25"></script>
-  <script defer src="app.js?v=0.25"></script>
+  <link rel="stylesheet" href="style.css?v=0.27">
+  <link rel="stylesheet" href="receiver.css?v=0.28">
+  <link rel="stylesheet" href="wear.css?v=0.27">
+  <link rel="stylesheet" href="crt-power.css?v=0.28">
+  <link rel="stylesheet" href="crt-power.css?v=0.28">
+  <script defer src="timeline.js?v=0.27"></script>
+  <script defer src="assets/audio-analysis.js?v=0.27"></script>
+  <script defer src="audio.js?v=0.27"></script>
+  <script defer src="tone.js?v=0.27"></script>
+  <script defer src="signal.js?v=0.27"></script>
+  <script defer src="meters.js?v=0.27"></script>
+  <script defer src="film.js?v=0.28"></script>
+  <script defer src="cassette.js?v=0.27"></script>
+  <script defer src="opening.js?v=0.27"></script>
+  <script defer src="crt-power.js?v=0.28"></script>
+  <script defer src="app.js?v=0.28"></script>
 </head>
 <body>
   <div id="viewport">
@@ -42,7 +46,7 @@
       </header>
 
       <div class="machine">
-        <aside class="deck" aria-label="Cassette deck">
+        <aside class="deck" aria-label="Cassette deck"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="deck-head"><span>CASSETTE</span><span>SIDE A</span></div>
           <div class="deck-name">AH–02</div>
           <div class="deck-hatch" id="deckHatch" data-state="loaded">
@@ -66,7 +70,7 @@
           <canvas id="scope" width="480" height="145" aria-label="Live stereo waveform"></canvas>
         </aside>
 
-        <section class="monitor" aria-label="Execution film">
+        <section class="monitor" aria-label="Execution film"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <i class="chassis-screw screw-tl" aria-hidden="true"></i><i class="chassis-screw screw-tr" aria-hidden="true"></i><i class="chassis-screw screw-bl" aria-hidden="true"></i><i class="chassis-screw screw-br" aria-hidden="true"></i>
           <div class="monitor-bar">
             <span><i class="receiver-lamp" aria-hidden="true"></i> MEMORY RECEIVER</span>
@@ -90,7 +94,7 @@
       </div>
 
       <footer class="soundboard" aria-label="Mixing deck and timeline">
-        <section class="mixer" aria-label="Playback and signal restoration">
+        <section class="mixer" aria-label="Playback and signal restoration"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="mixer-header"><span>SIGNAL RECOVERY</span><button id="signalAuto" class="automation-switch" aria-pressed="true" title="Follow the recorded signal recovery">AUTO</button><span class="mixer-leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
           <div class="mixer-channels">
             <label class="mix-strip master-strip">
@@ -115,7 +119,7 @@
           </div>
         </section>
 
-        <section class="tone-panel" aria-label="Three band equalizer">
+        <section class="tone-panel" aria-label="Three band equalizer"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="module-header"><span>TONE CONTROL</span><b>EQ</b></div>
           <div class="tone-controls">
             <label class="tone-control"><span>HI</span><span id="dialHi" class="tone-dial"><i class="dial-cap"></i><input id="eqHi" type="range" min="-12" max="12" step="0.5" value="0" aria-label="High frequency gain" title="High shelf · 6 kHz. Drag, scroll or use arrow keys. Double click to reset."></span><output id="eqHiLabel" for="eqHi">0.0 dB</output></label>
@@ -125,7 +129,7 @@
           <div class="tone-caption"><span>−12</span><b>DIRECT EQ</b><span>+12 dB</span></div>
         </section>
 
-        <section class="wave-deck" aria-label="Audio waveform and playback position">
+        <section class="wave-deck" aria-label="Audio waveform and playback position"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="timeline-head">
             <span class="timeline-name">SIDE A <strong>FALLING FLOWERS</strong></span>
             <div class="time-display"><time id="time">00:00</time> <span id="duration">/ 03:33</span></div>
@@ -138,13 +142,13 @@
           <div class="timeline-labels" aria-hidden="true"><span>00:00</span><span>01:00</span><span>02:00</span><span>03:00</span><span id="endTime">03:33</span></div>
         </section>
 
-        <section class="spectrum-panel" aria-label="Live post equalizer programme spectrum">
+        <section class="spectrum-panel" aria-label="Live post equalizer programme spectrum"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="module-header"><span>SPECTRUM</span><b>POST EQ</b></div>
           <div class="spectrum-bezel"><canvas id="spectrum" width="420" height="216" aria-label="Live frequency bands from 35 Hz to 18 kHz"></canvas></div>
           <div class="spectrum-scale" aria-hidden="true"><span>40</span><span>250</span><span>1k</span><span>4k</span><span>16k</span></div>
         </section>
 
-        <section class="phase-panel" aria-label="Stereo phase scope">
+        <section class="phase-panel" aria-label="Stereo phase scope"><span class="hardware-wear wear-edge" aria-hidden="true"></span><span class="hardware-wear wear-edge wear-edge--lower" aria-hidden="true"></span>
           <div class="phase-header">PHASE MONITOR</div>
           <div class="phase-bezel"><canvas id="phaseScope" width="400" height="256" aria-label="Live stereo phase trace"></canvas></div>
         </section>

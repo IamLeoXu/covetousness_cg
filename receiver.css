@@ -184,3 +184,9 @@
 .bench-intro .loading-title p { font-size:5.5px; letter-spacing:.7px; }
 .bench-intro .loading-tape-caption { margin-top:8px; font-size:5.5px; letter-spacing:.65px; }
 .bench-intro .loading-status { font-size:5.5px; letter-spacing:.75px; }
+
+
+
+.picture[data-screen="standby"] { background:#080e14; }
+.picture[data-screen="standby"] .crt-glass { background:radial-gradient(ellipse at 47% 42%,#acc0c60a,transparent 73%),linear-gradient(117deg,#bdcedb0c 0%,#a0b3c008 22%,#ffffff00 40% 72%,#b5c6d209 94%); box-shadow:inset 0 0 45px #010309a8,inset 0 0 3px #b7cadb30; }
+.picture[data-screen="standby"] .crt-glass::after { opacity:.6; background:repeating-linear-gradient(to bottom,#b1c8d205 0 1px,#01030935 1px 2px,transparent 2px 3px),repeating-linear-gradient(to right,#91ba9b09 0 1px,#b19bd006 1px 2px,#87aeb608 2px 3px); }

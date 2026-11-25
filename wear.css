@@ -1,0 +1,17 @@
+/* Fine mechanical scratches on casing and controls. Glass remains intact. */
+.hardware-wear { position:absolute; z-index:8; display:block; pointer-events:none; user-select:none; background-image:url('assets/ui/hardware-wear.png?v=0.27'); background-repeat:no-repeat; }
+.wear-edge { top:1px; left:1px; width:112px; height:64px; opacity:.68; background-size:512px 512px; background-position:-13px -45px; clip-path:polygon(0 0,100% 0,100% 12px,12px 12px,12px 100%,0 100%); }
+.wear-edge--lower { top:auto; left:auto; right:1px; bottom:1px; transform:rotate(180deg); opacity:.54; }
+.monitor > .wear-edge { width:155px; height:89px; background-size:660px 660px; background-position:-17px -59px; opacity:.46; }
+.monitor > .wear-edge--lower { width:78px; height:40px; opacity:.3; }
+.tone-panel > .wear-edge:not(.wear-edge--lower) { left:auto; right:1px; width:86px; height:55px; transform:scaleX(-1); background-size:430px 430px; background-position:-10px -37px; opacity:.42; }
+.wave-deck > .wear-edge--lower { background-position:-13px -45px; opacity:.48; }
+.mixer > .wear-edge { opacity:.45; }
+.mixer > .wear-edge--lower { background-position:-13px -45px; opacity:.6; }
+.spectrum-panel > .wear-edge:not(.wear-edge--lower) { top:auto; bottom:1px; width:74px; height:52px; transform:scaleY(-1); background-size:390px 390px; background-position:-9px -33px; opacity:.42; }
+.phase-panel > .wear-edge:not(.wear-edge--lower) { left:auto; right:1px; width:80px; height:52px; transform:scaleX(-1); background-size:420px 420px; background-position:-10px -37px; opacity:.38; }
+.tone-panel > .wear-edge--lower,.spectrum-panel > .wear-edge--lower,.phase-panel > .wear-edge--lower,.wave-deck > .wear-edge:not(.wear-edge--lower) { display:none; }
+.transport button::after { content:''; position:absolute; top:3px; right:3px; width:22px; height:16px; opacity:.3; background-image:url('assets/ui/hardware-wear.png?v=0.27'); background-size:120px 120px; background-position:left bottom; background-repeat:no-repeat; pointer-events:none; }
+.dial-cap::before { content:''; position:absolute; inset:1px; border-radius:50%; opacity:.48; background-image:url('assets/ui/hardware-wear.png?v=0.27'); background-size:128px 128px; background-position:right bottom; background-repeat:no-repeat; mask-image:radial-gradient(circle,transparent 0 52%,#000 64%); transform:rotate(var(--turn,0deg)); pointer-events:none; }
+.bench-mat::after { content:''; position:absolute; left:28px; bottom:9px; width:180px; height:64px; opacity:.25; background-image:url('assets/ui/hardware-wear.png?v=0.27'); background-size:560px 560px; background-position:right bottom; background-repeat:no-repeat; pointer-events:none; }
+.cinema .monitor > .hardware-wear { display:none; }
